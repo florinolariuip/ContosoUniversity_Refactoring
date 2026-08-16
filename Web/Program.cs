@@ -20,12 +20,17 @@ namespace Web
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<Infrastructure.SchoolContext>();
+                    var env = services.GetRequiredService<IWebHostEnvironment>();
+                    // rulează seed doar dacă NU e environment "Testing"
+                    if (!env.IsEnvironment("Testing"))
+                    {
+                        var context = services.GetRequiredService<Infrastructure.SchoolContext>();
 
-                    context.Database.EnsureCreated();
+                        context.Database.EnsureCreated();
 
-                    var mediator = services.GetRequiredService<IMediator>();
-                    await mediator.Send(new SeedDataCommand(), CancellationToken.None);
+                        var mediator = services.GetRequiredService<IMediator>();
+                        await mediator.Send(new SeedDataCommand(), CancellationToken.None);
+                    }
                 }
                 catch (Exception ex)
                 {
