@@ -48,6 +48,9 @@ namespace Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                // permite attribute-routed API controllers (ex: [ApiController])
+                endpoints.MapControllers();
             });
         }
     }
