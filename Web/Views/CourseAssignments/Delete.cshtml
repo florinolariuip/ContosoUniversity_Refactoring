@@ -1,0 +1,22 @@
+@model Domain.Entities.CourseAssignment
+
+@{
+    ViewData["Title"] = "Delete Course Assignment";
+}
+
+<h1>Delete Course Assignment</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<dl class="row">
+    <dt class="col-sm-2">Instructor</dt>
+    <dd class="col-sm-10">@Model.Instructor?.FullName</dd>
+    <dt class="col-sm-2">Course</dt>
+    <dd class="col-sm-10">@Model.Course?.Title</dd>
+</dl>
+<form asp-action="Delete">
+    <input type="hidden" name="instructorId" value="@Model.InstructorID" />
+    <input type="hidden" name="courseId" value="@Model.CourseID" />
+    <button type="submit" class="btn btn-danger">Delete</button> |
+    <a asp-action="Index">Back to List</a>
+</form>
+
