@@ -1,0 +1,33 @@
+@model IEnumerable<Domain.Entities.OfficeAssignment>
+
+@{
+    ViewData["Title"] = "Office Assignments";
+}
+
+<h1>Office Assignments</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Instructor</th>
+            <th>Location</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Instructor?.FullName</td>
+        <td>@item.Location</td>
+        <td>
+            <a asp-action="Details" asp-route-id="@item.InstructorID">Details</a> |
+            <a asp-action="Edit" asp-route-id="@item.InstructorID">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@item.InstructorID">Delete</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+

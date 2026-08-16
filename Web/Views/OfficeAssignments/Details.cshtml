@@ -1,0 +1,18 @@
+@model Domain.Entities.OfficeAssignment
+
+@{
+    ViewData["Title"] = "Office Assignment Details";
+}
+
+<h1>Office Assignment</h1>
+<dl class="row">
+    <dt class="col-sm-2">Instructor</dt>
+    <dd class="col-sm-10">@Model.Instructor?.FullName</dd>
+    <dt class="col-sm-2">Location</dt>
+    <dd class="col-sm-10">@Model.Location</dd>
+</dl>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.InstructorID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>
+
